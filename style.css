@@ -1,31 +1,61 @@
+@font-face {
+  font-family: "KCC-Ganpan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   transition: 0.3s;
+  font-family: "KCC-Ganpan";
+  color: #594545;
 }
 
 body {
-  background-image: url(img/note.png);
+  background-image: url(img/wallpaper.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .container {
-  background-color: white;
+  background-color: #fff8ea;
+  border: solid #594545;
+  border-width: 10px 0 10px;
+  padding: 1em;
   min-height: 100vh;
+  max-width: 700px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.task-area {
-  border: 1px solid lightgray;
-  margin-top: 2em;
+.input-area input {
+  border: 2px solid #815b5b;
+  border-radius: 3px;
+  padding: 3px;
+  width: 50%;
 }
 
+#add-button {
+  border: 2px solid #815b5b;
+  padding: 3px;
+  border-radius: 3px;
+  background-color: #fff8ea;
+}
+
+#add-button:hover {
+  background-color: #9e7676;
+}
+
+.task-area {
+  margin-top: 2em;
+}
 .task-tabs {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #9e7676;
   display: flex;
   position: relative;
 }
@@ -36,24 +66,68 @@ body {
 
 #under-line {
   height: 4px;
-  background-color: pink;
+  background-color: #9e7676;
   position: absolute;
-  width: 60px;
-  left: 0px;
+  width: 3em;
+  left: 0;
   top: 52px;
   padding: 0px;
 }
 
+.task-tabs div {
+  cursor: pointer;
+}
+
 .task {
+  border-bottom: 1px solid #9e767659;
   display: flex;
   justify-content: space-between;
   padding: 1em;
 }
 
-.task-done {
-  text-decoration: line-through;
+.task div:first-child {
+  width: 100%;
 }
 
-.task-area div {
-  cursor: pointer;
+.button-box {
+  display: flex;
+  align-items: center;
+  width: 5em;
+}
+
+.button-box button {
+  border: 2px solid #594545;
+  border-radius: 3px;
+  width: 2em;
+  height: 28px;
+  margin: 5px;
+  background-color: #fff8ea;
+}
+
+.button-box button:first-child:hover {
+  background-color: green;
+}
+
+.button-box button:nth-child(2):hover {
+  background-color: red;
+}
+
+.task-done {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+}
+
+.bottom-btn {
+  margin-top: 1em;
+}
+
+.bottom-btn button {
+  border: 3px solid #594545;
+  background-color: #fff8ea;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.bottom-btn button:hover {
+  background-color: #9e7676;
 }
