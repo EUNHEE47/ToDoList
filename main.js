@@ -14,12 +14,6 @@ let mode = "all";
 let filterList = [];
 let underLine = document.getElementById("under-line");
 
-for (i = 1; i < tabs.length; i++) {
-  tabs[i].addEventListener("click", function (event) {
-    filter(event);
-  });
-}
-
 addBtn.addEventListener("click", addTask);
 
 taskInput.addEventListener("keyup", function (event) {
@@ -27,6 +21,12 @@ taskInput.addEventListener("keyup", function (event) {
     addTask(event);
   }
 });
+
+for (i = 1; i < tabs.length; i++) {
+  tabs[i].addEventListener("click", function (event) {
+    filter(event);
+  });
+}
 
 // +버튼을 클릭 하면
 function addTask() {
@@ -40,6 +40,7 @@ function addTask() {
     taskContent: taskInput.value,
     isComplete: false,
   };
+
   taskList.push(task);
   taskInput.value = "";
   render();
@@ -47,6 +48,7 @@ function addTask() {
 
 // UI
 function render() {
+  let resultHTML = "";
   let list = [];
   if (mode === "all") {
     list = taskList;
@@ -54,7 +56,6 @@ function render() {
     list = filterList;
   }
 
-  let resultHTML = "";
   for (let i = 0; i < list.length; i++) {
     if (list[i].isComplete === true) {
       resultHTML += `<div class="task">
@@ -94,40 +95,35 @@ function deleteTask(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id === id) {
       taskList.splice(i, 1);
-      break;
     }
   }
   filter();
 }
 
 function filter(event) {
-  mode = event.target.id;
-  filterList = [];
-
   if (event) {
+    mode = event.target.id;
     underLine.style.width = event.target.offsetWidth + "px";
     underLine.style.left = event.target.offsetLeft + "px";
     underLine.style.top =
       event.target.offsetTop + (event.target.offsetHeight - 4) + "px";
   }
 
-  if (mode === "all") {
-    render();
-  } else if (mode === "ongoing") {
+  filterList = [];
+  if (mode === "ongoing") {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete === false) {
         filterList.push(taskList[i]);
       }
     }
-    render();
-  } else {
+  } else if (mode === "done") {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete === true) {
         filterList.push(taskList[i]);
       }
     }
-    render();
   }
+  render();
 }
 
 // ID값

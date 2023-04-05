@@ -82,7 +82,7 @@ body {
   border-bottom: 1px solid #9e767659;
   display: flex;
   justify-content: space-between;
-  padding: 1em;
+  align-items: center;
 }
 
 .task div:first-child {
@@ -104,30 +104,24 @@ body {
   background-color: #fff8ea;
 }
 
+.fa-check {
+  color: limegreen;
+}
+
+.fa-trash {
+  color: red;
+}
+
 .button-box button:first-child:hover {
   background-color: green;
 }
 
 .button-box button:nth-child(2):hover {
-  background-color: red;
+  background-color: rgb(239, 169, 169);
 }
 
 .task-done {
   text-decoration: line-through;
-  text-decoration-thickness: 3px;
-}
-
-.bottom-btn {
-  margin-top: 1em;
-}
-
-.bottom-btn button {
-  border: 3px solid #594545;
-  background-color: #fff8ea;
-  border-radius: 5px;
-  padding: 3px;
-}
-
-.bottom-btn button:hover {
-  background-color: #9e7676;
+  text-decoration-thickness: 2px;
+  opacity: 0.5;
 }
