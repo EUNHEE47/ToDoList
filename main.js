@@ -28,8 +28,13 @@ for (i = 1; i < tabs.length; i++) {
   });
 }
 
+function saveTodo() {
+  localStorage.setItem("todos", JSON.stringify(taskList));
+}
+
 // +버튼을 클릭 하면
-function addTask() {
+function addTask(e) {
+  e.preventDefault();
   if (taskInput.value === "") {
     alert("내용을 입력해 주세요");
     return;
@@ -42,8 +47,19 @@ function addTask() {
   };
 
   taskList.push(task);
+  saveTodo();
   taskInput.value = "";
-  render();
+  render(task);
+}
+
+let getTodo = localStorage.getItem("todos");
+
+if (getTodo !== null) {
+  let parseTodo = JSON.parse(getTodo);
+  taskList = parseTodo;
+  parseTodo.forEach((data) => {
+    render(data);
+  });
 }
 
 // UI
@@ -97,6 +113,8 @@ function deleteTask(id) {
       taskList.splice(i, 1);
     }
   }
+
+  saveTodo();
   filter();
 }
 
